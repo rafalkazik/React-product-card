@@ -8,7 +8,7 @@ export default class Card extends React.Component {
     products: this.props.data.products,
   };
 
-  cardSelect = (index) => {
+  selectNormalCard = (index) => {
     if (
       this.state.products[index].isActive === false &&
       this.state.products[index].isError === false
@@ -23,7 +23,7 @@ export default class Card extends React.Component {
     }
   };
 
-  errorCardSelect = (index) => {
+  selectErrorCard = (index) => {
     if (
       this.state.products[index].isActive === false &&
       this.state.products[index].isError === true
@@ -43,13 +43,16 @@ export default class Card extends React.Component {
       <section
         key={i.id}
         className={
+          // IF THE BOX IS ACTIVE, ENABLE AND WITHOUT ERROR:
           this.state.products[index].isActive &&
           this.state.products[index].boxEnable &&
           !this.state.products[index].isError
             ? "product-card product-card--active"
-            : "product-card" && !this.state.products[index].boxEnable
+            : // IF THE BOX IS DISABLED:
+            "product-card" && !this.state.products[index].boxEnable
             ? "product-card product-card--disabled"
             : "product-card" &&
+              // IF THE BOX IS ACTIVE, ENABLE AND WITH ERROR:
               (this.state.products[index].isActive &&
               this.state.products[index].boxEnable &&
               this.state.products[index].isError
@@ -59,11 +62,11 @@ export default class Card extends React.Component {
         onClick={
           (this.state.products[index].boxEnable &&
           !this.state.products[index].isError
-            ? () => this.cardSelect(index)
+            ? () => this.selectNormalCard(index)
             : console.log()) ||
           (this.state.products[index].boxEnable &&
           this.state.products[index].isError
-            ? () => this.errorCardSelect(index)
+            ? () => this.selectErrorCard(index)
             : console.log())
         }
       >
