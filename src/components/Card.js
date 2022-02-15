@@ -8,13 +8,26 @@ export default class Card extends React.Component {
     products: this.props.data.products,
   };
 
-  componentDidMount() {
-    console.log(this.props);
-    console.log(this.state);
-  }
-
   cardSelect = (index) => {
-    if (this.state.products[index].isActive === false) {
+    if (
+      this.state.products[index].isActive === false &&
+      this.state.products[index].isError === false
+    ) {
+      this.setState((state) => {
+        return (state.products[index].isActive = true);
+      });
+    } else {
+      this.setState((state) => {
+        return (state.products[index].isActive = false);
+      });
+    }
+  };
+
+  errorCardSelect = (index) => {
+    if (
+      this.state.products[index].isActive === false &&
+      this.state.products[index].isError === true
+    ) {
       this.setState((state) => {
         return (state.products[index].isActive = true);
       });
@@ -30,14 +43,28 @@ export default class Card extends React.Component {
       <section
         key={i.id}
         className={
-          this.state.products[index].isActive
+          this.state.products[index].isActive &&
+          this.state.products[index].boxEnable &&
+          !this.state.products[index].isError
             ? "product-card product-card--active"
-            : "product-card" && !i.boxEnable
+            : "product-card" && !this.state.products[index].boxEnable
             ? "product-card product-card--disabled"
-            : "product-card"
+            : "product-card" &&
+              (this.state.products[index].isActive &&
+              this.state.products[index].boxEnable &&
+              this.state.products[index].isError
+                ? "product-card product-card--active-error"
+                : "product-card")
         }
         onClick={
-          i.boxEnable ? () => this.cardSelect(index) : console.log("disabled")
+          (this.state.products[index].boxEnable &&
+          !this.state.products[index].isError
+            ? () => this.cardSelect(index)
+            : console.log()) ||
+          (this.state.products[index].boxEnable &&
+          this.state.products[index].isError
+            ? () => this.errorCardSelect(index)
+            : console.log())
         }
       >
         <picture className="product-card__picture picture">
@@ -52,12 +79,16 @@ export default class Card extends React.Component {
           />
         </picture>
         <section className="product-card__content content">
-          <div className="content__tag tag">
+          <div
+            className={
+              this.state.products[index].isError
+                ? "content__tag--error"
+                : "content__tag tag"
+            }
+          >
             <p className="tag__text">{i.tagText}</p>
           </div>
-
           <h2 className="product__name">{i.productName}</h2>
-
           <p className="content__project-text">PROJEKT:</p>
           <h3 className="content__project-name">{i.projectName}</h3>
         </section>

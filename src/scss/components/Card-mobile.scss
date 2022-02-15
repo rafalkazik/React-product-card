@@ -21,6 +21,10 @@
     outline: 1px solid colors.$productCardColorBlueBorder;
   }
 
+  &--active-error {
+    outline: 1px solid colors.$productCardColorRedBorder;
+  }
+
   &--disabled {
     opacity: 0.4;
   }
@@ -60,6 +64,17 @@
         font-size: 0.9rem;
         line-height: 1.2rem;
       }
+    }
+
+    .content__tag--error {
+      align-items: center;
+      background-color: colors.$redBoxColor;
+      border-radius: 2px;
+      color: colors.$redBoxFontColor;
+      display: flex;
+      height: 1.4rem;
+      justify-content: center;
+      width: 5.2rem;
     }
 
     .product__name {
