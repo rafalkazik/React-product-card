@@ -12,7 +12,11 @@ html {
 }
 
 body {
+  align-items: center;
   background-color: colors.$bgColor;
   color: colors.$mainFontColor;
+  display: flex;
   font-family: fonts.$font-family;
+  justify-content: center;
+  min-height: 100vh;
 }
