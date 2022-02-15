@@ -1,37 +1,55 @@
 import React from "react";
-import "../scss/Card.scss";
+import "../scss/components/Card-mobile.scss";
+import "../scss/components/Card-tablet.scss";
+import "../scss/components/Card-desktop.scss";
 
 export default class Card extends React.Component {
-  componentDidMount() {
-    console.log(this.props.data.products);
-  }
-
   state = {
-    active: false,
+    products: this.props.data.products,
   };
 
-  cardSelect = () => {
-    const currentState = this.state.active;
-    this.setState({ active: !currentState });
+  componentDidMount() {
+    console.log(this.props);
+    console.log(this.state);
+  }
+
+  cardSelect = (index) => {
+    if (this.state.products[index].isActive === false) {
+      this.setState((state) => {
+        return (state.products[index].isActive = true);
+      });
+    } else {
+      this.setState((state) => {
+        return (state.products[index].isActive = false);
+      });
+    }
   };
 
   productCard = () =>
-    this.props.data.products.map((i) => (
+    this.state.products.map((i, index) => (
       <section
         key={i.id}
         className={
-          this.state.active
+          this.state.products[index].isActive
             ? "product-card product-card--active"
+            : "product-card" && !i.boxEnable
+            ? "product-card product-card--disabled"
             : "product-card"
         }
-        onClick={() => this.cardSelect()}
+        onClick={
+          i.boxEnable ? () => this.cardSelect(index) : console.log("disabled")
+        }
       >
         <picture className="product-card__picture picture">
+          <source
+            media="(min-width: 1200px)"
+            srcSet={`${i.productImageDesktop}`}
+          />
           <img
-            src={i.productImage}
+            src={i.productImageMobile}
             className="picture__product-image"
             alt="product photo"
-          ></img>
+          />
         </picture>
         <section className="product-card__content content">
           <div className="content__tag tag">
@@ -47,6 +65,6 @@ export default class Card extends React.Component {
     ));
 
   render() {
-    return <>{this.productCard()}</>;
+    return <React.Fragment>{this.productCard()}</React.Fragment>;
   }
 }

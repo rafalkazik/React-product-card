@@ -1,0 +1,25 @@
+@use "../abstracts/fonts.scss";
+@use "../abstracts/colors.scss";
+@import "../abstracts/breakpoints.scss";
+
+.product-card {
+  @include desktop {
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 34rem;
+    height: 12rem;
+  }
+
+  .product-card__picture {
+    @include desktop {
+      width: 100px;
+      margin-right: 1.5rem;
+    }
+  }
+
+  .product-card__content {
+    @include desktop {
+      justify-content: center;
+    }
+  }
+}

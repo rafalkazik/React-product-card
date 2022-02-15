@@ -1,11 +1,24 @@
 {
   "products": [
     {
-      "productImage": "./images/mobilePhoto.png",
+      "productImageMobile": "./images/mobilePhoto.png",
+      "productImageDesktop": "./images/desktopPhoto.png",
       "tagText": "TAG TEXT",
       "productName": "0012-DE-Muller",
       "projectName": "Point 145",
+      "boxEnable": true,
+      "isActive": false,
       "id": 1
+    },
+    {
+      "productImageMobile": "./images/mobilePhoto.png",
+      "productImageDesktop": "./images/desktopPhoto.png",
+      "tagText": "TAG TEXT",
+      "productName": "0014-DE-Muller",
+      "projectName": "Point 145",
+      "boxEnable": false,
+      "isActive": false,
+      "id": 2
     }
   ]
 }

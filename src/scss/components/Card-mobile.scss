@@ -1,5 +1,6 @@
-@use "./abstracts/fonts";
-@use "./abstracts/colors";
+@use "../abstracts/fonts.scss";
+@use "../abstracts/colors.scss";
+@import "../abstracts/breakpoints.scss";
 
 .product-card {
   align-items: flex-start;
@@ -17,8 +18,16 @@
   }
 
   &--active {
-    background-color: colors.$productCardColor;
     outline: 1px solid colors.$productCardColorBlueBorder;
+  }
+
+  &--disabled {
+    opacity: 0.4;
+  }
+
+  &--disabled:hover {
+    cursor: initial;
+    background-color: transparent;
   }
 
   .product-card__picture {
@@ -28,10 +37,6 @@
     height: 100px;
     padding: 0;
     justify-self: center;
-
-    .picture__product-image {
-      width: 100%;
-    }
   }
 
   .product-card__content {
