@@ -6,13 +6,26 @@ export default class Card extends React.Component {
     console.log(this.props.data.products);
   }
 
+  state = {
+    active: false,
+  };
+
   cardSelect = () => {
-    console.log("hover");
+    const currentState = this.state.active;
+    this.setState({ active: !currentState });
   };
 
   productCard = () =>
     this.props.data.products.map((i) => (
-      <section key={i.id} className="product-card" onClick={this.cardSelect}>
+      <section
+        key={i.id}
+        className={
+          this.state.active
+            ? "product-card product-card--active"
+            : "product-card"
+        }
+        onClick={() => this.cardSelect()}
+      >
         <picture className="product-card__picture picture">
           <img
             src={i.productImage}

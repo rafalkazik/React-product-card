@@ -3,7 +3,6 @@
 
 .product-card {
   align-items: flex-start;
-  background-color: colors.$productCardColor;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
@@ -14,6 +13,12 @@
 
   &:hover {
     cursor: pointer;
+    background-color: colors.$productCardColor;
+  }
+
+  &--active {
+    background-color: colors.$productCardColor;
+    outline: 1px solid colors.$productCardColorBlueBorder;
   }
 
   .product-card__picture {
