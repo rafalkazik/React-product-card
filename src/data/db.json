@@ -1,7 +1,7 @@
 {
   "products": [
     {
-      "productImageMobile": "../images/mobilePhoto.png",
+      "productImageMobile": "../../images/mobilePhoto.png",
       "productImageDesktop": "../images/desktopPhoto.png",
       "tagText": "TAG TEXT",
       "productName": "0012-DE-Muller",
