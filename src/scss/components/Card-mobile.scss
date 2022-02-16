@@ -8,9 +8,9 @@
   display: flex;
   flex-direction: column;
   height: 22.1rem;
+  margin: 5rem 0;
   padding: 10px;
   width: 20rem;
-  margin: 5rem 0;
 
   &:hover {
     cursor: pointer;
@@ -36,11 +36,11 @@
 
   .product-card__picture {
     border: 0;
-    margin-bottom: 2.1rem;
-    width: 100%;
     height: 100px;
-    padding: 0;
     justify-self: center;
+    margin-bottom: 2.1rem;
+    padding: 0;
+    width: 100%;
   }
 
   .product-card__content {
@@ -91,8 +91,8 @@
     }
 
     .content__project-name {
-      line-height: 2.4rem;
       font-size: 1.6rem;
+      line-height: 2.4rem;
     }
   }
 }

@@ -5,15 +5,15 @@
 .product-card {
   @include desktop {
     flex-direction: row;
+    height: 12rem;
     justify-content: flex-start;
     width: 34rem;
-    height: 12rem;
   }
 
   .product-card__picture {
     @include desktop {
-      width: 100px;
       margin-right: 1.5rem;
+      width: 100px;
     }
   }
 

@@ -1,3 +1,17 @@
 @use "../abstracts/fonts.scss";
 @use "../abstracts/colors.scss";
 @import "../abstracts/breakpoints.scss";
+
+#root {
+  @include tablet {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1000px;
+  }
+  .product-card {
+    @include tablet {
+      margin: 3rem 5rem;
+    }
+  }
+}
