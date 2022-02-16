@@ -1,0 +1,48 @@
+{
+  "products": [
+    {
+      "productImageMobile": "../images/mobilePhoto.png",
+      "productImageDesktop": "../images/desktopPhoto.png",
+      "tagText": "TAG TEXT",
+      "productName": "0012-DE-Muller",
+      "projectName": "Point 145",
+      "boxEnable": true,
+      "isActive": false,
+      "isError": false,
+      "id": 1
+    },
+    {
+      "productImageMobile": "../images/mobilePhoto.png",
+      "productImageDesktop": "../images/desktopPhoto.png",
+      "tagText": "TAG TEXT",
+      "productName": "0014-DE-Muller",
+      "projectName": "Point 145",
+      "boxEnable": false,
+      "isActive": false,
+      "isError": false,
+      "id": 2
+    },
+    {
+      "productImageMobile": "../images/mobilePhoto.png",
+      "productImageDesktop": "../images/desktopPhoto.png",
+      "tagText": "TAG TEXT",
+      "productName": "0012-DE-Muller",
+      "projectName": "Point 145",
+      "boxEnable": true,
+      "isActive": false,
+      "isError": true,
+      "id": 3
+    },
+    {
+      "productImageMobile": "../images/mobilePhoto.png",
+      "productImageDesktop": "../images/desktopPhoto.png",
+      "tagText": "TAG TEXT",
+      "productName": "0014-DE-Muller",
+      "projectName": "Point 145",
+      "boxEnable": false,
+      "isActive": false,
+      "isError": true,
+      "id": 4
+    }
+  ]
+}

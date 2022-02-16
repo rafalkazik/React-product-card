@@ -1,0 +1,24 @@
+@use "./abstracts/fonts";
+@use "./abstracts/colors";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: fonts.$font-size;
+}
+
+body {
+  align-items: center;
+  background-color: colors.$bgColor;
+  color: colors.$mainFontColor;
+  display: flex;
+  flex-wrap: wrap;
+  font-family: fonts.$font-family;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+}
