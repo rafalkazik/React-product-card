@@ -14,11 +14,11 @@
     border-radius: 8px;
     display: flex;
     flex-direction: column;
-    height: 22.1rem;
     margin: 5rem 0;
+    min-height: 221px;
     padding: 10px;
-    width: 20rem;
     transition: 0.1s ease-in;
+    width: 200px;
 
     &:hover {
       cursor: pointer;
@@ -46,7 +46,7 @@
       border: 0;
       height: 100px;
       justify-self: center;
-      margin-bottom: 2.1rem;
+      margin-bottom: 21px;
       padding: 0;
       width: 100%;
     }
@@ -64,13 +64,19 @@
         border-radius: 2px;
         color: colors.$blueBoxFontColor;
         display: flex;
-        height: 1.4rem;
         justify-content: center;
-        width: 5.2rem;
-
+        justify-content: center;
+        max-width: 50%;
+        min-height: 100%;
+        min-width: 20px;
         .tag__text {
           font-size: 0.9rem;
           line-height: 1.2rem;
+        }
+      }
+      .content__tag {
+        @include tablet {
+          min-height: 1rem;
         }
       }
 
@@ -80,9 +86,9 @@
         border-radius: 2px;
         color: colors.$redBoxFontColor;
         display: flex;
-        height: 1.4rem;
         justify-content: center;
-        width: 5.2rem;
+        min-height: 14px;
+        min-width: 52px;
       }
 
       .product__name {
@@ -113,14 +119,16 @@
 
   .product-card {
     @include desktop {
+      align-items: center;
       flex-direction: row;
-      height: 12rem;
       justify-content: flex-start;
-      width: 34rem;
+      min-height: 100%;
+      width: 340px;
     }
 
     .product-card__picture {
       @include desktop {
+        margin-bottom: 0;
         margin-right: 1.5rem;
         width: 100px;
       }

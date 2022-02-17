@@ -48,13 +48,13 @@ export default class Card extends React.Component {
     }
   };
 
-  productCard = () => {
+  render() {
     const isActive = this.state.isActive;
     const isEnable = this.props.isEnable;
     const isError = this.props.isError;
 
     return (
-      <section
+      <li
         key={this.props.id}
         className={classNames(
           "card-list__product-card product-card",
@@ -95,11 +95,7 @@ export default class Card extends React.Component {
           <p className="content__project-text">PROJEKT:</p>
           <h3 className="content__project-name">{this.props.projectName}</h3>
         </section>
-      </section>
+      </li>
     );
-  };
-
-  render() {
-    return <React.Fragment>{this.productCard()}</React.Fragment>;
   }
 }
