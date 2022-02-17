@@ -1,102 +1,103 @@
 import React from "react";
-import "../scss/components/Card-mobile.scss";
-import "../scss/components/Card-tablet.scss";
-import "../scss/components/Card-desktop.scss";
+import classNames from "classnames";
+import "../scss/components/Card.scss";
 
 export default class Card extends React.Component {
   state = {
-    products: this.props.data.products,
+    isActive: false,
   };
 
-  selectNormalCard = (index) => {
-    if (
-      this.state.products[index].isActive === false &&
-      this.state.products[index].isError === false
-    ) {
+  selectCard = () => {
+    const isEnable = this.props.isEnable;
+    const isError = this.props.isError;
+    if (isEnable && !isError) {
+      this.selectNormalCard();
+    }
+    if (isEnable && isError) {
+      this.selectErrorCard();
+    }
+  };
+
+  selectNormalCard = () => {
+    const activeAndNoError =
+      this.state.isActive === false && this.props.isError === false;
+
+    if (activeAndNoError) {
       this.setState((state) => {
-        return (state.products[index].isActive = true);
+        return (state.isActive = !state.isActive);
       });
     } else {
       this.setState((state) => {
-        return (state.products[index].isActive = false);
+        return (state.isActive = !state.isActive);
       });
     }
   };
 
-  selectErrorCard = (index) => {
-    if (
-      this.state.products[index].isActive === false &&
-      this.state.products[index].isError === true
-    ) {
+  selectErrorCard = () => {
+    const activeAndError =
+      this.state.isActive === false && this.props.isError === true;
+
+    if (activeAndError) {
       this.setState((state) => {
-        return (state.products[index].isActive = true);
+        return (state.isActive = !state.isActive);
       });
     } else {
       this.setState((state) => {
-        return (state.products[index].isActive = false);
+        return (state.isActive = !state.isActive);
       });
     }
   };
 
-  productCard = () =>
-    this.state.products.map((i, index) => (
+  productCard = () => {
+    const isActive = this.state.isActive;
+    const isEnable = this.props.isEnable;
+    const isError = this.props.isError;
+
+    return (
       <section
-        key={i.id}
-        className={
-          // IF THE BOX IS ACTIVE, ENABLE AND WITHOUT ERROR:
-          this.state.products[index].isActive &&
-          this.state.products[index].boxEnable &&
-          !this.state.products[index].isError
-            ? "product-card product-card--active"
-            : // IF THE BOX IS DISABLED:
-            "product-card" && !this.state.products[index].boxEnable
-            ? "product-card product-card--disabled"
-            : "product-card" &&
-              // IF THE BOX IS ACTIVE, ENABLE AND WITH ERROR:
-              (this.state.products[index].isActive &&
-              this.state.products[index].boxEnable &&
-              this.state.products[index].isError
-                ? "product-card product-card--active-error"
-                : "product-card")
-        }
-        onClick={
-          (this.state.products[index].boxEnable &&
-          !this.state.products[index].isError
-            ? () => this.selectNormalCard(index)
-            : console.log()) ||
-          (this.state.products[index].boxEnable &&
-          this.state.products[index].isError
-            ? () => this.selectErrorCard(index)
-            : console.log())
-        }
+        key={this.props.id}
+        className={classNames(
+          "card-list__product-card product-card",
+          {
+            "product-card product-card--active":
+              isActive && isEnable && !isError,
+          },
+          {
+            "product-card product-card--disabled": !isEnable,
+          },
+          {
+            "product-card product-card--active-error":
+              isActive && isEnable && isError,
+          }
+        )}
+        onClick={() => this.selectCard()}
       >
         <picture className="product-card__picture picture">
           <source
             media="(min-width: 1200px)"
-            srcSet={`${i.productImageDesktop}`}
+            srcSet={`${this.props.productImageDesktop}`}
           />
           <img
-            src={i.productImageMobile}
+            src={this.props.productImageMobile}
             className="picture__product-image"
             alt="product photo"
           />
         </picture>
         <section className="product-card__content content">
           <div
-            className={
-              this.state.products[index].isError
-                ? "content__tag--error"
-                : "content__tag tag"
-            }
+            className={classNames("content__tag tag", {
+              "content__tag--error": isError,
+            })}
           >
-            <p className="tag__text">{i.tagText}</p>
+            <p className="tag__text">{this.props.tagText}</p>
           </div>
-          <h2 className="product__name">{i.productName}</h2>
+          <h2 className="product__name">{this.props.productName}</h2>
           <p className="content__project-text">PROJEKT:</p>
-          <h3 className="content__project-name">{i.projectName}</h3>
+          <h3 className="content__project-name">{this.props.projectName}</h3>
         </section>
       </section>
-    ));
+    );
+  };
 
   render() {
     return <React.Fragment>{this.productCard()}</React.Fragment>;
